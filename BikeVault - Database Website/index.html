@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+Leslie Col-iteng 000772220
+Date: October 23 2018
+
+This page will be the display for the log in page. 
+It will accept a hard-coded username and password
+
+I, Leslie Col-iteng, 000772220, certify that this material 
+is my original work. No other person's work has been used 
+without due acknowledgement.
+-->
+<html>
+    <head>
+        <title>Bike Vault</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--CSS styling-->
+        <style type = "text/css">
+            body{
+                height: 100%;
+            }
+            .bg{
+                background-image: url("images/background.jpg");
+                height: 100%;
+                background-repeat: inherit;
+                background-size: cover;
+            }
+
+            .labels{
+                width: 130px;
+            }
+            button{
+                padding: 20px;
+                border-radius: 10px;
+                background-color: chocolate;
+                font-weight: 1000;
+                border: 2px solid black;
+            }
+
+            button:hover{
+                background-color: orange;
+            }
+
+            legend img{
+                width: 390px;
+            }
+
+            .border{
+                border: 2px solid black;
+            }
+
+            fieldset{
+                text-align: center;
+                margin-top: 20%;
+                margin-left: 2%;
+                width: 600px;
+                padding-top: 100px;
+                padding-bottom: 100px;
+                border-image: url("images/border.png") 100 round;
+                border-image-width: 50px;
+            }
+
+            input{
+                border: 2px solid black;
+            }
+
+        </style>
+
+    </head>
+    <body class = "bg">
+        <div>
+            <fieldset>
+                <legend>
+                    <img src = "images/legend.PNG" alt = "enter info">
+                </legend>
+
+                <!--Form that sends the username and password input to the login.php file where it will be verified-->
+                <form method = "post" action = "login.php">
+                    <label for = "username"><img src = "images/usName.PNG" class = "labels"></label><br>
+                    <input type = "text" name = "username"><br><br>
+                    <label for = "password"><img src = "images/pass.PNG" class = "labels"></label><br>
+                    <input type = "password" name = "password"><br><br>
+                    <button type = "submit" name = "logInButton">Log In</button>
+                </form>
+            </fieldset>
+        </div>
+    </body>
+</html>

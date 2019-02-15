@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!--
+Leslie Col-iteng 000772220
+Date: November 29 2018
+
+This is a simple javascript web page that simulates a dice game called Three or more.
+It need two players, each with separate roll button. When ever the roll button is
+pressed, a javascript code randomizes and outputs 5 numbers from 1 - 6. 
+All unique numbers will be stored. The more unique number a player has the more
+points he gets. 
+
+
+I, Leslie Col-iteng, 000772220, certify that this material 
+is my original work. No other person's work has been used 
+without due acknowledgement.
+-->
+<html>
+    <head>
+        <title>The Dice Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--
+        This is the CSS for the page
+        -->
+        <style type = "text/css">
+            
+            tr,td{
+                text-align: center;
+                border: 2px solid black;
+                margin: 3px;
+                padding: 10px;
+            }
+            
+            table{
+                width: 70%;
+                margin-right: auto;
+                margin-left: auto;
+                text-align: Center;
+            }
+            
+            body{
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+                vertical-align: middle;
+                text-align: center;
+                font-family: kristen ITC , sans-serif;
+                background: url("Images/background.jpg");
+                background-size: 100%;
+            }
+            
+            .buttonStyle{
+                border-radius: 6px;
+                padding: 40px;
+                background-color: rgb(255, 218, 179);
+                font-family: kristen ITC , sans-serif;
+            }
+            
+            
+            .buttonStyle3{
+                border-radius: 6px;
+                padding: 40px;
+                font-size: 80px;
+                background-color: rgb(255, 218, 179);
+                font-family: kristen ITC , sans-serif;
+            }
+            
+            .buttonStyle2{
+                border-radius: 6px;
+                padding: 20px;
+                border: 1px solid rgb(77, 40, 0);
+                background-color: rgb(0, 230, 77);
+                color: rgb(51 26 0);
+                margin: 3px;
+                width: 200px;
+                font-size: 20px;
+                font-family: kristen ITC , sans-serif;
+            }
+            
+            .playerOneBox{
+                border-radius: 10px 0px 0px 10px;
+                background-color: rgb(204, 105, 0);
+                color: white;
+            }
+            
+            .playerTwoBox{
+                border-radius: 0px 10px 10px 0px;
+                background-color: rgb(204, 105, 0);
+                color: white;
+            }
+            
+            .boxStyle{
+                background-color: rgb(102, 51, 0);
+                color: white;
+            }
+            
+            .boxStyle2{
+                background-color: rgb(204, 105, 0);
+            }
+            
+            button:hover{
+                background-color: rgb(204, 255, 204);
+                color: purple;
+            }
+            
+            button:active{
+                background-color: rgb(255, 140, 26);
+                color: purple;
+                border: 2px solid rgb(102, 255, 102);
+            }
+            
+            .instruction{
+                background-color: rgb(0, 102, 0);
+                text-align: left;
+                color: white;
+                border: 3px solid brown;
+            }
+            
+            button:disabled{
+                background-color: rgb(195, 195, 213);
+                color: Red;
+            }
+            
+            #winBanner{
+                position: absolute;
+                margin-left: 32%;
+                background-color: rgb(255, 255, 26);
+                text-align: center;
+                width: 400px;
+                color: black;
+                display: none;
+            }
+            
+            .animate{
+                text-align: center;
+                position:relative;
+                animation:animatetop 1s;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes animatetop{
+                from{
+                    top: -300px;
+                    opacity: 0 ;
+                }
+                to{
+                    top: 400px;
+                    opacity: 1;
+                }
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        <table class="animate" id="winBanner">
+            <tr>
+                <td><h1 id="winner"></h1><a href="index.html"><button id='reset' class='buttonStyle3'>Play Again?</button></a></td> <!--Contains the reset button, This element is hidden until the game ends-->
+            </tr>
+        </table>
+        
+        <table>
+            <button class="buttonStyle2" onclick="instructionHideShow('instructions')">Help</button>
+           
+            
+            <tr id="instructions" class="instruction">
+                <td colspan="3">
+                    <h3>Instructions:</h3>
+                        <p>Click the roll button to randomly roll the dice.</p>
+                        <p>Wait for the result.</p>
+                        <p>The more unique die you have the more points you get.</p>
+                        <p>If you have 2 or less unique die, you get no points and you pass your turn</p>
+                        <p>Point equivalence:</p>
+                                    <p>3 of a kind = 3</p>
+                                    <p>4 of a kind = 6</p>
+                                    <p>5 of a kind = 12</p>
+                </td>
+            </tr>
+            
+ 
+            <tr>
+                <td rowspan="3" class="playerOneBox"><h1>Player 1</h1><h3>Score</h3><h1 id="scoreOne">0</h1></td>
+                <td class="boxStyle"><h1>3 OF A KIND</h1></td>
+                <td rowspan="3" class="playerTwoBox"><h1>Player 2</h1><h3>Score</h3><h1 id="scoreTwo"> 0</h1></td>
+            </tr>
+            
+            <tr >
+                <td class="boxStyle2">
+                    <table >
+                        <tr>
+                            <td class = "buttonStyle" ><h1 id="dOne">1</h1></td>
+                            <td class = "buttonStyle" ><h1 id="dTwo">2</h1></td>
+                            <td class = "buttonStyle" ><h1 id="dThree">3</h1></td>
+                            <td class = "buttonStyle" ><h1 id="dFour">4</h1></td>
+                            <td class = "buttonStyle" ><h1 id="dFive">5</h1></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="boxStyle">
+                    <table>
+                        <tr>
+                            
+                        <button class = "buttonStyle2" id="playerOneRoll" onclick="playerRoll();" ><h3>Roll</h3></button>
+                            <button class = "buttonStyle2" id="counterButton"><h3  id="roundCounter">Round: 1</h3></button>
+                            <button class = "buttonStyle2" id="playerTwoRoll" onclick="playerRoll();" disabled><h3>Roll</h3></button>
+                            
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="instruction">
+                <td colspan ="3" ><h2 id="status">Player One's Roll</h2><h2 id="winStatus">.......</h2></td>
+            </tr>
+            
+        </table>
+    
+    <!--JavaScript Starts Here-->
+    <script>
+        
+        /**
+         * hides and shows the instruction table
+         * 
+         * @param {type} id - variable that holds the id of the "instruction" (a table row)
+         * @returns {undefined}
+         */
+        function instructionHideShow(id){
+            var instructionElement = document.getElementById(id); 
+            
+            // set the display of the instructions to none and back to normal everytime the help button is pressed
+            if((instructionElement.style.display === 'none') === true){
+                instructionElement.style.display='';
+            }
+            else{
+                instructionElement.style.display='none';
+            }
+        }
+            
+            var counter = 5;            // Counts the rounds played
+            var playerOneScore = 0;     // stores player 1 score
+            var playerTwoScore = 0;     // stores player 2 score
+          
+          /**
+           * 
+           * Generates 5 different random numbers
+           * Store unique values in an array and calculate the equivalent score
+           * 
+           * Disables the other players button after he/she finishes her turn
+           * 
+           * 
+           * @returns {undefined}
+           */
+         function playerRoll(){
+             var diceOne = Math.floor(Math.random() * 6) + 1;       //Generate 5 random numbers and assign them to 5 different variables
+             var diceTwo = Math.floor(Math.random() * 6) + 1;
+             var diceThree = Math.floor(Math.random() * 6) + 1;
+             var diceFour = Math.floor(Math.random() * 6) + 1;
+             var diceFive = Math.floor(Math.random() * 6) + 1;
+             
+             document.getElementById("dOne").innerHTML = diceOne;          //display each number
+             document.getElementById("dTwo").innerHTML = diceTwo;
+             document.getElementById("dThree").innerHTML = diceThree;
+             document.getElementById("dFour").innerHTML = diceFive;
+             document.getElementById("dFive").innerHTML = diceFour;
+             
+             if(document.getElementById("playerTwoRoll").disabled && (counter !== 0)){
+                 document.getElementById("playerTwoRoll").disabled = false;     // disable the other players button
+                 document.getElementById("playerOneRoll").disabled = true;
+                 document.getElementById("status").innerHTML = "Player Two's Turn to Roll";
+                 
+                 var tempArray = [diceOne];                         // will contain unique arrays
+                 var playerOneArray = [diceTwo, diceThree, diceFour, diceFive];     // the array of all the randomly generated number
+                 
+            // isolate unique values, if it exists in tempArray dont add
+            playerOneArray.forEach(function(element){
+                    var pass = 1;
+                    for(var x = 0; x <= 4; x++){
+                         if(element === tempArray[x]){
+                             pass = 0;
+                         }
+                     }
+                     if(pass === 1){
+                         tempArray.push(element);
+                     }
+                 });
+                 
+                 if(tempArray.length === 3){
+                     var score = 3;
+                 }
+                 else if(tempArray.length === 4){
+                     var score = 6;
+                 }
+                 else if(tempArray.length === 5){
+                     var score = 12;
+                 }
+                 else{
+                     var score = 0;
+                 }
+                 console.log(tempArray.length);
+                 document.getElementById("winStatus").innerHTML = "Player One Got  ["+tempArray+"]  " +tempArray.length+ "  of a Kind! Equivalent of " +score+ " points!";  // update the status label everytime the roll is clicked;
+                 
+                 playerOneScore = playerOneScore + score;  //Add the current score to the total score;
+                 document.getElementById("scoreOne").innerHTML = playerOneScore; // Update the displayed score
+                 
+             }
+             else if(document.getElementById("playerOneRoll").disabled && (counter !== 0)){
+                 document.getElementById("playerOneRoll").disabled = false;         // disable the other players button
+                 document.getElementById("playerTwoRoll").disabled = true;
+                 counter = counter - 1;
+                 document.getElementById("roundCounter").innerHTML = "Round: " + (6 - counter);
+                 document.getElementById("status").innerHTML = "Player One's Turn to Roll"
+                 console.log(counter);
+                 
+                 var tempArray = [diceOne];
+                 var playerOneArray = [diceTwo, diceThree, diceFour, diceFive];
+                 playerOneArray.forEach(function(element){
+                    var pass = 1;
+                    for(var x = 0; x <= 4; x++){
+                         if(element === tempArray[x]){
+                             pass = 0;
+                         }
+                     }
+                     if(pass === 1){
+                         tempArray.push(element);
+                     }
+                 });
+                 
+                 if(tempArray.length === 3){
+                     var score = 3;
+                 }
+                 else if(tempArray.length === 4){
+                     var score = 6;
+                 }
+                 else if(tempArray.length === 5){
+                     var score = 12;
+                 }
+                 else{
+                     var score = 0;
+                 }
+                 console.log(tempArray.length);
+                 document.getElementById("winStatus").innerHTML = "Player Two Got  ["+tempArray+"]  " +tempArray.length+ "  of a Kind! Equivalent of " +score+ " points!";      // update the status label everytime the roll is clicked
+                 playerTwoScore = playerTwoScore + score;   // Add the current score to the total score;
+                 document.getElementById("scoreTwo").innerHTML = playerTwoScore;    // Update the displayed score
+            }
+             
+             
+             if(counter === 0){
+                 document.getElementById("playerOneRoll").disabled = true;          //After 5 rounds of the game, disable eveything
+                 document.getElementById("playerTwoRoll").disabled = true;
+                 document.getElementById("counterButton").disabled = true;
+                 document.getElementById("roundCounter").innerHTML = "End Of Game";
+                 
+             
+             
+             // determin the winner
+             if(playerOneScore > playerTwoScore){
+                 document.getElementById("winner").innerHTML = "Player One Wins With " + playerOneScore + " Points!!!";     // if player one wins display this
+                 document.getElementById("winBanner").style.display="block";                                                // shows the winner and the reset button
+             }
+             
+             else if(playerTwoScore > playerOneScore){
+                 document.getElementById("winner").innerHTML = "Player Two Wins With " + playerTwoScore + " Points !!!";    // if player two wins display this
+                 document.getElementById("winBanner").style.display="block";                                                // show the winner and the reset button
+             }
+             
+             else if(playerTwoScore === playerOneScore){
+                 document.getElementById("winner").innerHTML = "Its a Tie!!! Both at " + playerOneScore + " Points !!!";    // display this if its a tie
+                 document.getElementById("winBanner").style.display="block";                                                // show the winner and the reset button
+             }
+             counter = 5; // Reset the counter
+         
+         }
+         }
+    </script>
+        
+    
+    </body>
+</html>

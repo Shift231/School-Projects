@@ -1,0 +1,202 @@
+/**
+Leslie Col-iteng 000772220
+Date: December 4 2018
+
+This is the css file for the index html.
+It organizes, fix and add details to the html attributes and components
+
+I, Leslie Col-iteng, 000772220, certify that this material 
+is my original work. No other person's work has been used 
+without due acknowledgement.
+*/
+
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            
+            table, tr, td{
+                border: 5px solid black;
+                padding: 5px;
+                margin: 5px;
+            }
+            
+            td, tr{
+                background-color: rgb(206, 149, 100);
+            }
+            
+            table{
+                border: 10px solid black;
+                width: 50%;
+                margin-right: auto;
+                margin-left: auto;
+                border-radius: 10px;
+                margin-top: 200px;
+                background-color: rgb(243, 230, 216);
+                color: white;
+            }
+            
+            body{
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                font-family: comic sans ms, sans-serif;
+                background-image: url("images/background.jpg");
+                background-size: cover;
+            }
+            
+            
+            .button{
+                padding: 15px;
+                width: 300px;
+                font-size: 20px;
+                border: 5px solid black;
+                background-color: rgb(194, 123, 61);
+                color: white;
+                font-family: comic sans ms, sans-serif;
+            }
+            
+            #resetButton{
+                position: fixed;
+                height: 80px;
+                padding: 5px;
+                width: 100px;
+                margin-top: -80px;
+                margin-left: 500px;
+                border-radius: 10px;
+            }
+            
+                        
+            button:hover{
+                background-color: rgb(249, 242, 235);
+                color: black;
+            }
+            
+            
+            button:active{
+                background-color: rgb(195, 130, 60);
+                color: rgb(57, 113, 172);
+                border: 5px solid rgb(117, 78, 36);
+            }
+            
+            .tableHeading{
+                text-align: left;
+                margin: 20px;
+                margin-left: 5px;
+            }
+            
+            .tableQuestion{
+                text-align: left;
+                margin-left: 5px;
+                padding: 10px;
+                padding-left: 20px;
+                color: black;
+            }
+            
+            .questions{
+                padding: 20px;
+            }
+            
+            .questions2{
+                padding-bottom: 20px;
+                padding-top: 20px;
+                text-align: center;
+            }
+            
+            #answerQ2{
+                padding: 3px;
+                text-align: center;
+                font-size: 24px;
+                height: 30px;
+            }
+            
+            #question4{
+                text-align: center;
+                margin: 10px;
+                padding: 5px;
+                font-size: 26px;
+            }
+            
+            .tableSubmit{
+                padding:10px;
+                background-color: rgb(136, 86, 43);
+                border-radius: 0px 0px 10px 0px;
+            }
+            
+            .headingColor{
+                background-color: rgb(136, 86, 43);
+                border-radius: 10px 10px 0px 0px;
+            }
+                        
+            .score{
+                border-radius: 0px 0px 0px 10px;
+                color: black;
+            }
+            
+            fieldset{
+                padding: 5px;
+                border: 3px solid rgb(117, 78, 36);
+                border-radius: 5px;
+            }
+            
+            #progress{
+                border: 2px solid rgb(102, 68, 0);
+                margin: 100px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+                background-color: rgb(255, 230, 179);
+            }
+            
+            #progressBar{
+                width: 1%;
+                height: 50px;
+                background-color: rgb(255, 215, 128);
+            }
+
+            .finalResultEffect{
+                -webkit-text-stroke-width: 0.1px;
+                -webkit-text-stroke-color: black;
+            }
+            
+            #question1Table{
+                position: inherit;
+                display: normal;
+            }
+            
+            #question2Table{
+                position: inherit;
+                display: none;
+            }
+
+            #question3Table{
+                position: inherit;
+                display: none;
+            }
+            
+            #question4Table{
+                position: inherit;
+                display: none;
+            }
+            
+            #question5Table{
+                position: inherit;
+                display: none;
+            }
+            
+            #resultTable{
+                position: inherit;
+                display: none;
+            }
+            
+            #finalResult, #scoreLabel{
+                text-align: center;
+                color: transparent;
+            }
+            
+            .status{
+                text-align: center;
+            }
+
+

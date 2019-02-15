@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+Leslie Col-iteng 000772220
+Date: December 4 2018
+
+This page consist of the main GUI interface. I displays a table one after the other once an answer is submitted.
+Each table consist of different questions. The final table displays the results.
+
+I, Leslie Col-iteng, 000772220, certify that this material 
+is my original work. No other person's work has been used 
+without due acknowledgement.
+-->
+<html>
+    <head>
+        <script src="gameJavaScript.js"></script>
+        <link rel = "stylesheet" href = "gameCss.css">
+        <title>The Modern Quiz</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    <body>
+        <table id="question1Table">
+            <tr>
+                <td class="headingColor" colspan="2"><h1 class="tableHeading">Question 1: Complete the sentence</h1></td>
+            </tr>
+            <tr>
+                <td  class="tableQuestion" colspan="2">
+                <fieldset><h3 id = "question1">The earth is _________?</h3></fieldset>
+                    <p class="questions"><input type ="radio" name="answer" id="optionA1">  Is the only Planet in the Universe</p>
+                    <p class="questions"><input type ="radio" name="answer" id="optionB1">  Flat</p>
+                    <p class="questions"><input type ="radio" name="answer" id="optionC1">  Spherical</p>
+                    <p class="questions"><input type ="radio" name="answer" id="optionD1">  Just an Illusion</p>
+                    <p id="status1" class="status"></p>
+                </td>
+            </tr>
+            
+            <tr >
+                <td class="score"><h3>Score:</h3><h2 id="score1">0</h2></td>
+                <td class="tableSubmit"><button id="submitAnswer1" class="button" onclick="load('question1');">Submit</button></td>
+            </tr>
+        </table>
+        
+        <table id="question2Table">
+            <tr>
+                <td class="headingColor" colspan="2"><h1 class="tableHeading">Question 2: Answer the Question Correctly</h1></td>
+            </tr>
+            <tr>
+                <td  class="tableQuestion" colspan="2">
+                <fieldset><h3 id = "question2">"Male" is one gender and "Female" is another gender. How many biological genders are there?</h3></fieldset>
+                    <p class="questions2"><input type ="text" name="answer" id="answerQ2"></p>
+                    <p id="status2" class="status"></p>
+                </td>
+            </tr>
+            
+            <tr >
+                <td class="score"><h3>Score:</h3><h2 id="score2">0</h2></td>
+                <td class="tableSubmit"><button id="submitAnswer2" class="button" onclick="load('question2');">Submit</button></td>
+            </tr>
+        </table>
+        
+        <table id="question3Table">
+            <tr>
+                <td class="headingColor" colspan="2"><h1 class="tableHeading">Question 3: True or False</h1></td>
+            </tr>
+            <tr>
+                <td  class="tableQuestion" colspan="2">
+                <fieldset><h3 id = "question3">Australia doesn't Exist!</h3></fieldset>
+                    <p class="questions"><input type ="radio" name="answer" id="optionTrue3">TRUE</p>
+                    <p class="questions"><input type ="radio" name="answer" id="optionFalse3">FALSE</p>
+                    <p id="status3" class="status"></p>
+                </td>
+            </tr>
+            
+            <tr >
+                <td class="score"><h3>Score:</h3><h2 id="score3">0</h2></td>
+                <td class="tableSubmit"><button id="submitAnswer3" class="button" onclick="load('question3');">Submit</button></td>
+            </tr>
+        </table>
+        
+        <table id="question4Table">
+            <tr>
+                <td class="headingColor" colspan="2"><h1 class="tableHeading">Question 4: Answer the Question Correctly</h1></td>
+            </tr>
+            <tr>
+                <td  class="tableQuestion" colspan="2">
+                <fieldset><h3>Excluding Pluto, There are how many planets in our solar system?</h3></fieldset>
+                    <select id = "question4">
+                        <option value="1">1</option>
+                        <option value="35">35</option>
+                        <option value="9">9</option>
+                        <option value="8">8</option>
+                        <option value="109">109</option>
+                    </select>
+                <p id="status4" class="status"></p>
+                </td>
+            </tr>
+            
+            <tr >
+                <td class="score"><h3>Score:</h3><h2 id="score4">0</h2></td>
+                <td class="tableSubmit"><button id="submitAnswer4" class="button" onclick="load('question4');">Submit</button></td>
+            </tr>
+        </table>
+        
+        <table id="question5Table">
+            <tr>
+                <td class="headingColor" colspan="2"><h1 class="tableHeading">Question 5: Answer the Following Question. Extensive Research Needed</h1></td>
+            </tr>
+            <tr>
+                <td  class="tableQuestion" colspan="2">
+                <fieldset><h3 id = "question5">Which of the following is NOT TRUE about Vaccinations?</h3></fieldset>
+                    <p class="questions"><input type ="radio" name="answer" id="optionA5">  It prevents Measles, Mumps, Rubbela</p>
+                    <p class="questions"><input type ="radio" name="answer" id="optionB5">  One cause of autism</p>
+                    <p class="questions"><input type ="radio" name="answer" id="optionC5">  It is free</p>
+                    <p class="questions"><input type ="radio" name="answer" id="optionD5">  It prevents a nearly iradicated disease from spreading</p>
+                    <p id="status5" class="status"></p>
+                </td>
+            </tr>
+            
+            <tr >
+                <td class="score"><h3>Score:</h3><h2 id="score5">0</h2></td>
+                <td class="tableSubmit"><button id="submitAnswer5" class="button" onclick="load('question5');">Submit</button></td>
+            </tr>
+        </table>
+        
+        <table id="resultTable">
+            <tr>
+                <td class="headingColor" colspan="2"><h1 class="tableHeading">Results:</h1><a href="index.html"><button id = "resetButton" class="button">Reset</button></a></td>
+            </tr>
+            <tr>
+                <td  class="tableQuestion" colspan="2">
+                <fieldset><h3 id = "loadLabel">Okay! we have your Results. Would you like to see them? Click on the button below.</h3></fieldset>
+                <div id = "progress">
+                    <div id = "progressBar"></div>
+                </div>
+                
+                <h1 id="scoreLabel"></h1>
+                <h2 id="finalResult"></h2>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="tableSubmit"><button class="button" onclick="move();">See Results</button></td>
+            </tr>
+        </table>
+        
+    </body>
+</html>
